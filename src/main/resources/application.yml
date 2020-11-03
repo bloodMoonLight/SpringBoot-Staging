@@ -1,0 +1,45 @@
+server:
+  port: 8080
+  max-http-header-size: 10240   #设置请求头大小
+  tomcat:
+    threads:
+      min-spare: 20 #最小线程数
+      max: 100 #最大线程
+    connection-timeout: 5000    #连接超时时间
+
+spring:
+  application:
+    name: springboot-monomerproject
+  profiles:
+    active: dev   # 默认选择开发环境
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss  # 日期格式化
+    time-zone: GMT+8        #时区
+
+
+  servlet:  #Servlet 相关配置
+    multipart:
+      max-file-size: 50M    #最大的文件大小
+      max-request-size: 50M  #最大的请求大小
+      enabled: true #开启文件上传
+
+# 配置日志相关
+logging:
+  file:
+    path: F:\zhanghongzhi\Staging\MonomerProject\log\log.log
+  level: debug
+
+
+
+# 配置Mybatis-plus相关
+mybatis-plus:
+  type-aliases-package: com.springboot.project.entity   #配置别名扫描
+  mapper-locations: classpath:mapper/**/*.xml  #配置xml的路径
+  global-config:
+    #驼峰下划线转换
+    db-column-underline: true
+    id-type: 0
+  configuration:
+      map-underscore-to-camel-case: true
+
+      #cache-enabled: true
